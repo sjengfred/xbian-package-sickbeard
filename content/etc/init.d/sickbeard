@@ -40,6 +40,7 @@ EXTRA_DAEMON_OPTS=" --config=/usr/local/etc/sickbeard/sickbeard.ini"
 EXTRA_SSD_OPTS=" --group=xbian"
 PID_PATH=`dirname $PID_FILE`
 DAEMON_OPTS=" SickBeard.py -q --daemon --nolaunch --pidfile=$PID_FILE --datadir=${DATA_DIR} ${EXTRA_DAEMON_OPTS}"
+NICE=0
 
 ##
 . /lib/lsb/init-functions
@@ -85,7 +86,7 @@ case "$ACTION" in
 				if [ -f "/tmp/sickbeard.pid" ]; then
 					rm /tmp/sickbeard.pid
 				fi
-                start-stop-daemon --background -d $APP_PATH -c $RUN_AS $EXTRA_SSD_OPTS --start --pidfile $PID_FILE --exec $DAEMON -- $DAEMON_OPTS
+                start-stop-daemon --background -d $APP_PATH -c $RUN_AS $EXTRA_SSD_OPTS --start --nicelevel $NICE --pidfile $PID_FILE --exec $DAEMON -- $DAEMON_OPTS
                 check_retval
         else
                 PID=$(cat $PID_FILE);
