@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $1 == "remove" ]; then
+
+        if [ -f "/etc/init.d/sickbeard" ]; then
+                /etc/init.d/sickbeard stop &>/dev/null;
+        fi
+
+fi

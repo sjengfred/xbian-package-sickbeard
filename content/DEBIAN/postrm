@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ "$1" == "remove" ] || [ "$1" == "purge" ]; then
+	
+	if [ -d "/usr/local/share/sickbeard" ]; then
+       	while true; do
+    			read -p "Do you want to remove the sickbeard database files? (yes/no) " yn
+    			case $yn in
+       			yes ) 	rm -r /usr/local/share/sickbeard &>/dev/null; 
+					break;;
+        			no )   break;;
+        			* ) echo "Please answer yes or no.";;
+    			esac
+		done
+	fi
+
+	if [ -d "/usr/local/etc/sickbeard" ]; then
+		rm -r /usr/local/etc/sickbeard &>/dev/null
+	fi
+
+fi

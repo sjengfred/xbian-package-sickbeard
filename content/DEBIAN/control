@@ -1,0 +1,9 @@
+Origin: XBian
+Package: xbian-package-sickbeard
+Version: 1.2
+Section: net
+Priority: optional
+Architecture: armhf
+Depends: xbian-update, python-cheetah
+Maintainer: sjengfred <sjengfred@home.nl>
+Description: SickBeard compiled, patched and configured for XBian
